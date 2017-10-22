@@ -1,7 +1,7 @@
 {
   "name": "Mean Stack",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "authors": [
     "Mohan"
   ],
@@ -15,7 +15,8 @@
   "private": true,
   "ignore": [
     "**/.*",
-    "node_modules"
+    "node_modules",
+    "public/vendor"
   ],
   "dependencies": {
     "jquery": "^3.2.1",
