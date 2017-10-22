@@ -25,22 +25,27 @@ app.get('/partials/:partialPath', function(req, res){
     res.render('partials/'+req.params.partialPath);
 });
 
-var port=3030;
+var port= 3030;
 app.listen(port);
 console.log('Listeningon Port '+port+'...');
 
-mongoose.connect('mongodb://localhost/multivision');
+//if(env === 'development') {
+//mongoose.connect('mongodb://localhost:27017/multivision', { useMongoClient: true });
+//}else {
+    mongoose.connect('mongodb://mohan5070:soori@123@ds127065.mlab.com:27065/multivision');
+//}
 var db = mongoose.connection;
 db.on('error',console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
     console.log('Connection db openend');
 });
 
-var messageSchema = mongoose.Schema({message: String});
-var Message = mongoose.model('Message', messageSchema);
+var Schema = mongoose.Schema;
+var Message = mongoose.model('Message', new Schema({message: String}));
 var mongoMessage;
-
 Message.findOne().exec(function(err, messageDoc) {
+    console.log(err);
+    console.log(messageDoc);
     if(messageDoc) {
         mongoMessage = messageDoc.message;
     }else {
