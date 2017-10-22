@@ -29,11 +29,11 @@ var port= 3030;
 app.listen(port);
 console.log('Listeningon Port '+port+'...');
 
-//if(env === 'development') {
-//mongoose.connect('mongodb://localhost:27017/multivision', { useMongoClient: true });
-//}else {
+if(env === 'development') {
+mongoose.connect('mongodb://localhost:27017/multivision', { useMongoClient: true });
+}else {
     mongoose.connect('mongodb://mohan5070:soori@123@ds127065.mlab.com:27065/multivision');
-//}
+}
 var db = mongoose.connection;
 db.on('error',console.error.bind(console, 'connection error...'));
 db.once('open', function callback() {
